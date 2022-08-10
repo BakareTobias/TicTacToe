@@ -1,4 +1,4 @@
-import screens,time,pygame
+import objects,time,pygame
 
 done = False
 
@@ -6,17 +6,17 @@ toggle = False
 
 # CALLING OF THE FUNCTION TO
 # MAKE THE SCREEN FOR THE WINDOW
-win = screens.welcomeScreen.makeCurrentScreen()
+win = objects.welcomeScreen.makeCurrentScreen()
 
 
 # MAIN LOOPING
 while not done:
 	# CALLING OF screenUpdate
 	# function FOR MENU SCREEN
-	screens.welcomeScreen.screenUpdate()
+	objects.welcomeScreen.screenUpdate()
 	
 	# CALLING THE FUNCTION OF CONTROL BAR
-	screens.winnerScreen.screenUpdate()
+	objects.winnerScreen.screenUpdate()
 	# STORING THE MOUSE EVENT TO
 	# CHECK THE POSITION OF THE MOUSE
 	mouse_pos = pygame.mouse.get_pos()
@@ -27,25 +27,25 @@ while not done:
 
 # MENU BAR CODE TO ACCESS
 	# CHECKING MENU SCREEN FOR ITS UPDATE
-	if screens.welcomeScreen.checkUpdate():
-		screens.goScreenbutton = screens.NextButton.focusCheck(mouse_pos,
+	if objects.welcomeScreen.checkUpdate():
+		objects.goScreenbutton = objects.NextButton.focusCheck(mouse_pos,
 												mouse_click)
-		screens.NextButton.showButton(screens.welcomeScreen.returnTitle())
+		objects.NextButton.showButton(objects.welcomeScreen.returnTitle())
 
-		if screens.goScreenbutton:
-			win = screens.winnerScreen.makeCurrentScreen()
-			screens.welcomeScreen.endCurrentScreen()
+		if objects.goScreenbutton:
+			win = objects.winnerScreen.makeCurrentScreen()
+			objects.welcomeScreen.endCurrentScreen()
 
 	# CONTROL BAR CODE TO ACCESS
 	# CHECKING CONTROL SCREEN FOR ITS UPDATE
-	elif screens.goScreen.checkUpdate():
-		return_back = screens.goButton.focusCheck(mouse_pos,
+	elif objects.goScreen.checkUpdate():
+		return_back = objects.goButton.focusCheck(mouse_pos,
 												mouse_click)
-		screens.goButton.showButton(screens.goScreen.returnTitle())
+		objects.goButton.showButton(objects.goScreen.returnTitle())
 
 		if return_back:
-			screens.goScreen.endCurrentScreen()
-			win = screens.welcomeScreen.makeCurrentScreen()
+			objects.goScreen.endCurrentScreen()
+			win = objects.welcomeScreen.makeCurrentScreen()
 			
 	# CHECKING IF THE EXIT BUTTON HAS BEEN CLICKED OR NOT
 	for event in pygame.event.get():
