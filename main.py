@@ -16,7 +16,7 @@ while not done:
 	screens.welcomeScreen.screenUpdate()
 	
 	# CALLING THE FUNCTION OF CONTROL BAR
-	screens.goScreen.screenUpdate()
+	screens.winnerScreen.screenUpdate()
 	# STORING THE MOUSE EVENT TO
 	# CHECK THE POSITION OF THE MOUSE
 	mouse_pos = pygame.mouse.get_pos()
@@ -33,7 +33,7 @@ while not done:
 		screens.NextButton.showButton(screens.welcomeScreen.returnTitle())
 
 		if screens.goScreenbutton:
-			win = screens.goScreen.makeCurrentScreen()
+			win = screens.winnerScreen.makeCurrentScreen()
 			screens.welcomeScreen.endCurrentScreen()
 
 	# CONTROL BAR CODE TO ACCESS
@@ -56,7 +56,7 @@ while not done:
 
     
 	pygame.display.update()
-	time.sleep(.21)
+	time.sleep(.02)
 # CLOSE THE PROGRAM
 pygame.quit()
 

@@ -1,5 +1,5 @@
-screenWidth = 400
-screenHeight=500
+screenWidth = 380
+screenHeight=520
 
 
 #set up colors

@@ -1,3 +1,4 @@
+from tkinter import font
 import variables,pygame
 pygame.init()
 
@@ -38,8 +39,6 @@ class Screen():
 
 	# THIS WILL CONFIRM WHEHTER THE NAVIGATION OCCURS
 	def checkUpdate(self):
-		# HERE backgroundColor IS THE COLOR CODE
-		
 		return self.CurrentState
 
 	# THIS WILL UPDATE THE SCREEN WITH
@@ -53,10 +52,7 @@ class Screen():
 		return self.screen
 
 
-
-# NAVIGATION BUTTON CLASS
-class NavButton():
-
+class Button:
 	# INITIALIZATION OF BUTTON
 	# COMPONENTS LIKE POSITION OF BUTTON,
 	# COLOR OF BUTTON, FONT COLOR OF BUTTON, FONT SIZE,
@@ -72,7 +68,7 @@ class NavButton():
 		# LAST_Y COORDINATE OF BUTTON
 		self.sy = sy
 		# FONT SIZE FOR THE TEXT IN A BUTTON
-		self.fontsize = 25
+		self.fontsize = 15
 		# BUTTON COLOUR
 		self.bcolour = bcolour
 		# RECTANGLE COLOR USED TO DRAW THE BUTTON
@@ -84,10 +80,9 @@ class NavButton():
 		# CURRENT IS OFF
 		self.CurrentState = False
 		# FONT OBJECT FROM THE SYSTEM FONTS
-		self.buttonf = pygame.font.SysFont(font, self.fontsize)
+		self.buttonf = pygame.font.SysFont("TimesNewRoman", self.fontsize)# A comment.
 
-	# DRAW THE BUTTON FOR THE TWO
-	# TABS MENU_SCREEN AND CONTROL TABS MENU
+	# DRAW THE BUTTON FOR THE SCREENS
 	def showButton(self, display):
 		if(self.CurrentState):
 			pygame.draw.rect(display, self.fbcolour,
@@ -107,6 +102,10 @@ class NavButton():
 					(self.fontsize/2)*(len(self.text)/2) -
 					5, (self.y + (self.sy/2) -
 						(self.fontsize/2)-4))))
+	
+# NAVIGATION BUTTON CLASS
+class NavButton(Button):
+
 
 	# THIS FUCNTION CAPTURE WHETHER
 	# ANY MOUSE EVENT OCCUR ON THE BUTTON
@@ -123,3 +122,27 @@ class NavButton():
 			# ELSE LET THE CURRENT STATE TO BE OFF
 			self.CurrentState = False
 			return False
+
+
+class Text():
+	#class for all text in TicTacToe program
+	def __init__(self,content,x,y,backgroundColor,fontSize):
+		self.content = content
+		self.x = x
+		self.y = y
+		self.backgroundColor  = backgroundColor
+		self.fontColor = variables.WHITE
+		self.fontsize = fontSize
+		self.buttonf = pygame.font.Font("TimesNewRoman",self.fontsize)
+
+	def drawText(self,display):
+		textsurface = self.buttonf.render(self.content,True,self.fontColor,self.backgroundColor)
+			# THIS LINE WILL DRAW THE SURF ONTO THE SCREEN
+		textRect = textsurface.get_rect()
+		textRect.center = (self.x//2,self.y//2)
+			
+		
+
+	
+
+		
