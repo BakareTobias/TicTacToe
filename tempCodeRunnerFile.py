@@ -1,3 +1,1 @@
-import variables
-
-print(variables.BLACK)
+"TimesNewRoman"
