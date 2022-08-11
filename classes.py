@@ -1,3 +1,4 @@
+from re import T
 from tkinter import font
 import variables,pygame
 pygame.init()
@@ -46,6 +47,7 @@ class Screen():
 	def screenUpdate(self):
 		if self.CurrentState:
 			self.screen.fill(self.backgroundColor)
+			
 
 	# RETURNS THE TITLE OF THE SCREEN
 	def returnTitle(self):
@@ -68,7 +70,7 @@ class Button:
 		# LAST_Y COORDINATE OF BUTTON
 		self.sy = sy
 		# FONT SIZE FOR THE TEXT IN A BUTTON
-		self.fontsize = 15
+		self.fontsize = 25
 		# BUTTON COLOUR
 		self.bcolour = bcolour
 		# RECTANGLE COLOR USED TO DRAW THE BUTTON
@@ -79,46 +81,64 @@ class Button:
 		self.text = text
 		# CURRENT IS OFF
 		self.CurrentState = False
+		#font
+		self.font =font
 		# FONT OBJECT FROM THE SYSTEM FONTS
-		self.buttonf = pygame.font.SysFont("TimesNewRoman", self.fontsize)# A comment.
+		self.buttonf = pygame.font.SysFont(self.font, self.fontsize)# A comment.
 
 	# DRAW THE BUTTON FOR THE SCREENS
 	def showButton(self, display):
 		if(self.CurrentState):
 			pygame.draw.rect(display, self.fbcolour,
 						(self.x, self.y,
-						self.sx, self.sy))
+						self.sx, self.sy),0,9)
 		else:
 			pygame.draw.rect(display, self.fbcolour,
 						(self.x, self.y,
-						self.sx, self.sy))
+						self.sx, self.sy),0,9)
 		# RENDER THE FONT OBJECT FROM THE STSTEM FONTS
 		textsurface = self.buttonf.render(self.text,
 										False, self.fcolour)
 
 		# THIS LINE WILL DRAW THE SURF ONTO THE SCREEN
 		display.blit(textsurface,
-					((self.x + (self.sx/2) -
-					(self.fontsize/2)*(len(self.text)/2) -
-					5, (self.y + (self.sy/2) -
-						(self.fontsize/2)-4))))
+					(self.x + (self.sx/4) 
+					, (self.y + (self.sy/4))))
 	
 # NAVIGATION BUTTON CLASS
 class NavButton(Button):
-
-
 	# THIS FUCNTION CAPTURE WHETHER
 	# ANY MOUSE EVENT OCCUR ON THE BUTTON
 	def focusCheck(self, mousepos, mouseclick):
 		if(mousepos[0] >= self.x and mousepos[0] <= self.x +
 				self.sx and mousepos[1] >= self.y and mousepos[1]
 				<= self.y + self.sy):
+			self.fbcolour=variables.GOLD	
 			self.CurrentState = True
 			# IF MOUSE BUTTON CLICK THEN
 			# NAVIGATE TO THE NEXT OR PREVIOUS TABS
 			return mouseclick[0]
 
 		else:
+			self.fbcolour=variables.RED	
+			# ELSE LET THE CURRENT STATE TO BE OFF
+			self.CurrentState = False
+			return False
+
+class SelectionButtons(Button):
+	def focusCheck(self, mousepos, mouseclick):
+		if(mousepos[0] >= self.x and mousepos[0] <= self.x +
+				self.sx and mousepos[1] >= self.y and mousepos[1]
+				<= self.y + self.sy):
+			self.fbcolour = variables.GOLD
+			self.CurrentState = True
+			# IF MOUSE BUTTON CLICK THEN
+			# NAVIGATE TO THE NEXT OR PREVIOUS TABS
+			return mouseclick[0]
+
+		else:
+			self.fbcolour=variables.RED	
+
 			# ELSE LET THE CURRENT STATE TO BE OFF
 			self.CurrentState = False
 			return False
@@ -133,13 +153,15 @@ class Text():
 		self.backgroundColor  = backgroundColor
 		self.fontColor = variables.WHITE
 		self.fontsize = fontSize
-		self.buttonf = pygame.font.Font("TimesNewRoman",self.fontsize)
+		self.buttonf = pygame.font.Font("Quicksand-VariableFont_wght.ttf",self.fontsize)
 
 	def drawText(self,display):
 		textsurface = self.buttonf.render(self.content,True,self.fontColor,self.backgroundColor)
 			# THIS LINE WILL DRAW THE SURF ONTO THE SCREEN
 		textRect = textsurface.get_rect()
 		textRect.center = (self.x//2,self.y//2)
+
+		display.blit(textsurface,textRect)
 			
 		
 

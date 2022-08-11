@@ -1,16 +1,16 @@
+import sys
 import objects,time,pygame
 
-done = False
-
-toggle = False
 
 # CALLING OF THE FUNCTION TO
 # MAKE THE SCREEN FOR THE WINDOW
-win = objects.welcomeScreen.makeCurrentScreen()
+screen1 = objects.welcomeScreen.makeCurrentScreen()
 
-
+#bool to help draw text
+textBool1  = False
+textBool2 =  False
 # MAIN LOOPING
-while not done:
+while True:
 	# CALLING OF screenUpdate
 	# function FOR MENU SCREEN
 	objects.welcomeScreen.screenUpdate()
@@ -26,12 +26,28 @@ while not done:
 	keys = pygame.key.get_pressed()
 
 # MENU BAR CODE TO ACCESS
-	# CHECKING MENU SCREEN FOR ITS UPDATE
+	# CHECKING MENU SCREEN FOR ITS UPDATE	screen1
 	if objects.welcomeScreen.checkUpdate():
+		#Write  title text
+		objects.Title.drawText(objects.welcomeScreen.returnTitle())#Tobias' Tictactoe
+		objects.Player1SymbolChoice.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
+		#X button
+		objects.XButton.showButton(objects.welcomeScreen.returnTitle())
+		objects.Player1symbol = objects.XButton.focusCheck(mouse_pos,mouse_click)
+		if objects.Player1symbol:
+			textBool1=True
+		#O button
+		objects.OButton.showButton(objects.welcomeScreen.returnTitle())
+		objects.Player1symbol = objects.OButton.focusCheck(mouse_pos,mouse_click)
+		if objects.Player1symbol:
+			textBool2 = True
+		#NExt button
+		#check whether mouse is clicked while in button borders
 		objects.goScreenbutton = objects.NextButton.focusCheck(mouse_pos,
 												mouse_click)
+		#draw next button
 		objects.NextButton.showButton(objects.welcomeScreen.returnTitle())
-
+		#if next button is pressed
 		if objects.goScreenbutton:
 			win = objects.winnerScreen.makeCurrentScreen()
 			objects.welcomeScreen.endCurrentScreen()
@@ -46,19 +62,23 @@ while not done:
 		if return_back:
 			objects.goScreen.endCurrentScreen()
 			win = objects.welcomeScreen.makeCurrentScreen()
-			
+	if textBool1:
+		objects.PlayerSymbols1.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
+	elif textBool2:
+		objects.PlayerSymbols2.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
+
 	# CHECKING IF THE EXIT BUTTON HAS BEEN CLICKED OR NOT
 	for event in pygame.event.get():
 	
 		# IF CLICKED THEN CLOSE THE WINDOW
 		if(event.type == pygame.QUIT):
-			done = True
+			pygame.quit()
+			sys.exit()
 
     
 	pygame.display.update()
 	time.sleep(.02)
-# CLOSE THE PROGRAM
-pygame.quit()
+
 
 
 
