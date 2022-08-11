@@ -1,10 +1,14 @@
 import sys
+from classes import Board
 import objects,time,pygame
 
 
 # CALLING OF THE FUNCTION TO
 # MAKE THE SCREEN FOR THE WINDOW
 screen1 = objects.welcomeScreen.makeCurrentScreen()
+
+#whose turn is it
+Turn = 0
 
 #bool to help draw text
 textBool1  = False
@@ -52,20 +56,30 @@ while True:
 			win = objects.winnerScreen.makeCurrentScreen()
 			objects.welcomeScreen.endCurrentScreen()
 
-	# CONTROL BAR CODE TO ACCESS
-	# CHECKING CONTROL SCREEN FOR ITS UPDATE
-	elif objects.goScreen.checkUpdate():
-		return_back = objects.goButton.focusCheck(mouse_pos,
-												mouse_click)
-		objects.goButton.showButton(objects.goScreen.returnTitle())
-
-		if return_back:
-			objects.goScreen.endCurrentScreen()
-			win = objects.welcomeScreen.makeCurrentScreen()
+	#which player is x 
 	if textBool1:
 		objects.PlayerSymbols1.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
 	elif textBool2:
 		objects.PlayerSymbols2.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
+	
+	
+	
+	#BOARD ASPECT OF GAME	
+	#draw board
+	objects.board.drawBoard(objects.welcomeScreen.returnTitle())
+	#indicate whose turn it is
+	if Turn %2 == 0:
+		objects.p1turn.drawText(objects.welcomeScreen.returnTitle())
+		pass
+	else:
+		objects.p2turn.drawText(objects.welcomeScreen.returnTitle())
+		pass
+	#check if a valid move is made
+	validMove  =objects.board.focuscheck(objects.welcomeScreen.returnTitle(),mouse_pos,mouse_click)
+	
+	if validMove:
+		objects.board.drawX(objects.welcomeScreen.returnTitle())
+		print('P')
 
 	# CHECKING IF THE EXIT BUTTON HAS BEEN CLICKED OR NOT
 	for event in pygame.event.get():

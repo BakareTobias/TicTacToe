@@ -1,5 +1,5 @@
 from typing import Text
-from classes import Screen, NavButton,variables,Text,SelectionButtons
+from classes import Board, Screen, NavButton,variables,Text,SelectionButtons
 
 #WELCOME SCREEN(SCREEN 1)
 ##welcome screen where player 1 and 2 select X or O
@@ -12,18 +12,26 @@ NextButton = NavButton(300, 450, 80, 50, variables.GOLD,
 Title = Text("Tobias' Tic-Tac-Toe",variables.screenWidth,80,variables.TEAL,25)
 
 Player1SymbolChoice = Text("Player1 X or O?",variables.screenWidth-200,
-							320,variables.TEAL,20)
-XButton = SelectionButtons(170,140,40,40,None,variables.RED,
+							170,variables.TEAL,20)
+XButton = SelectionButtons(170,65,40,40,None,variables.RED,
 							"PermanentMarker-Regular.ttf",
 							variables.WHITE, "X")
-OButton = SelectionButtons(230,140,40,40,None,variables.RED,
+OButton = SelectionButtons(230,65,40,40,None,variables.RED,
 							"PermanentMarker-Regular.ttf",
 							variables.WHITE, "O")
-PlayerSymbols1 = Text(variables.p1ix,variables.screenWidth,420,variables.TEAL,25)
-PlayerSymbols2 = Text(variables.p1io,variables.screenWidth,420,variables.TEAL,25)
+PlayerSymbols1 = Text(variables.p1ix,variables.screenWidth,270,variables.TEAL,25)
+PlayerSymbols2 = Text(variables.p1io,variables.screenWidth,270,variables.TEAL,25)
+
+#BOARD
+p1turn = Text("Player1's turn",variables.screenWidth-20,340,variables.TEAL,25)
+p2turn = Text("Player2's turn",variables.screenWidth-20,340,variables.TEAL,25)
+
+board = Board(100,200)
 
 
-#board screen
+
+
+#SCREEN 2 Board Screen
 goScreen = Screen("go screen")
 goButton = NavButton(0, 450, 80, 50, variables.BLACK,
 					variables.RED, "TimesNewRoman",

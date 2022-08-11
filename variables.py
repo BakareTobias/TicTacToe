@@ -19,3 +19,6 @@ p1ix = ("Player1 is X \n Player 2 is O")
 
 p1io = ("Player1 is O \n Player 2 is X")
 
+movesLeft = [1,2,3,4,5,6,7,8,9]
+
+

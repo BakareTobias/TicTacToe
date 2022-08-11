@@ -1,7 +1,76 @@
 from re import T
+import sys
 from tkinter import font
 import variables,pygame
 pygame.init()
+pygame.event.get()
+
+class Board():
+	def __init__(self,x,y):
+		self.x = x
+		self.y = y
+
+
+	def drawBoard(self,display):
+		pygame.draw.line(display,variables.WHITE,(self.x+50,self.y),(self.x+50,self.y+150),6)
+		pygame.draw.line(display,variables.WHITE,(self.x+100,self.y),(self.x+100,self.y+150),6)
+		pygame.draw.line(display,variables.WHITE,(self.x,self.y+50),(self.x+150,self.y+50),6)
+		pygame.draw.line(display,variables.WHITE,(self.x,self.y+100),(self.x+150,self.y+100),6)
+
+	def drawX(self,display):
+		pygame.draw.line(display,variables.BLACK,(self.x,self.y),(self.x+30,self.y+30),4)
+		pygame.draw.line(display,variables.BLACK,(self.x,self.y+30),(self.x+30,self.y),4)
+
+	def drawO(self,display):
+		pygame.draw.circle(display,variables.WHITE,(self.x,self.y),15,3)
+
+	def focuscheck(self,display,mousepos,mouseclick ):
+		
+		#ROW 1
+		if self.x<=mousepos[0]<=self.x+54 and self.y<=mousepos[1]<=self.y+50 and 1 in variables.movesLeft :
+			variables.movesLeft.remove(1)
+			print('x')
+			return mouseclick[0]
+		if self.x+55<=mousepos[0]<=self.x+110 and self.y<=mousepos[1]<=self.y+50 and 2 in variables.movesLeft :
+			variables.movesLeft.remove(2)
+			return
+		if self.x+111<=mousepos[0]<=self.x+166 and self.y<=mousepos[1]<=self.y+50 and 3 in variables.movesLeft :  
+			variables.movesLeft.remove(3)
+			return
+		#ROW 2
+		if self.x<=mousepos[0]<=self.x+54 and self.y+51<=mousepos[1]<=self.y+101 and 4 in variables.movesLeft :
+			variables.movesLeft.remove(4)
+			return
+		if self.x+55<=mousepos[0]<=self.x+110 and self.y+51<=mousepos[1]<=self.y+101 and 5 in variables.movesLeft :
+		
+			variables.movesLeft.remove(5)
+			return
+		if self.x+111<=mousepos[0]<=self.x+166 and self.y+51<=mousepos[1]<=self.y+101 and 6 in variables.movesLeft :
+		  
+			variables.movesLeft.remove(6)
+			return
+		#ROW 3
+		if self.x<=mousepos[0]<=self.x+54 and self.y+102<=mousepos[1]<=self.y+152 and 7 in variables.movesLeft :
+		  
+			variables.movesLeft.remove(7)
+			return
+		if self.x+55<=mousepos[0]<=self.x+110 and self.y+102<=mousepos[1]<=self.y+152 and 8 in variables.movesLeft :
+		
+			variables.movesLeft.remove(8)
+			return
+		if self.x+111<=mousepos[0]<=self.x+166 and self.y+102<=mousepos[1]<=self.y+152 and 9 in variables.movesLeft :
+		  
+			variables.movesLeft.remove(9)
+			return
+		else:
+			pass
+
+
+
+
+
+
+
 
 
 class Screen():
