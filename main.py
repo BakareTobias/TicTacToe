@@ -1,7 +1,8 @@
 from shutil import move
 import sys
-from classes import Board
-import objects,time,pygame
+import objects,time,pygame,variables
+
+move1=False
 
 
 # CALLING OF THE FUNCTION TO
@@ -62,10 +63,12 @@ while True:
 		objects.PlayerSymbols1.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
 		#player1 symbol is X
 		p1Symbol ='X'
+		p2Symbol ='O'
 	elif textBool2:
 		objects.PlayerSymbols2.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
 		#player1 symbol is O
 		p1Symbol ='O'
+		p2Symbol ='X'
 	
 	
 	#BOARD ASPECT OF GAME	
@@ -74,13 +77,24 @@ while True:
 	#indicate whose turn it is
 	if Turn %2 == 0:
 		objects.p1turn.drawText(objects.welcomeScreen.returnTitle())
-		pass
+		isClicked,Pmove =objects.board.validatemove(objects.welcomeScreen.returnTitle(),mouse_pos,mouse_click)#if the move is valid
+		#check if a valid move is made	
+		if isClicked:
+			move1= variables.DrawMove(Pmove,p1Symbol)
+			variables.ActuallyDrawsMove(move1)
+			pass
+			Turn +=1
+
+
 	else:
 		objects.p2turn.drawText(objects.welcomeScreen.returnTitle())
-		pass
-	#check if a valid move is made	
-	if objects.board.validatemove(objects.welcomeScreen.returnTitle(),mouse_pos,mouse_click):#if the move is valid
-		pass
+		isClicked,Pmove =objects.board.validatemove(objects.welcomeScreen.returnTitle(),mouse_pos,mouse_click)#if the move is valid
+		#check if a valid move is made	
+		if isClicked:
+			variables.DrawMove(Pmove,p2Symbol)
+			pass
+			Turn +=1
+
 
 
 

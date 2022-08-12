@@ -1,3 +1,5 @@
+import objects
+
 screenWidth = 380
 screenHeight=520
 
@@ -21,4 +23,19 @@ p1io = ("Player1 is O \n Player 2 is X")
 
 movesLeft = [1,2,3,4,5,6,7,8,9]
 
+boardX=100
+boardY=200
+
+        
+def DrawMove(Pmove,pSymbol):
+		if Pmove ==1 and pSymbol=='X':
+			return True
+
+def ActuallyDrawsMove(move):
+    if move == True:
+        objects.board.drawX(objects.welcomeScreen.returnTitle(),objects.board.x,objects.board.y)
+
+
+
+			
 

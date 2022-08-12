@@ -1,6 +1,6 @@
 from typing import Text
-from classes import Board, Screen, NavButton,variables,Text,SelectionButtons,PlayerMove
-
+from classes import Board, Screen, NavButton,variables,Text,SelectionButtons
+import variables
 #WELCOME SCREEN(SCREEN 1)
 ##welcome screen where player 1 and 2 select X or O
 welcomeScreen = Screen("Welcome screen")
@@ -26,10 +26,12 @@ PlayerSymbols2 = Text(variables.p1io,variables.screenWidth,270,variables.TEAL,25
 p1turn = Text("Player1's turn",variables.screenWidth-20,340,variables.TEAL,25)
 p2turn = Text("Player2's turn",variables.screenWidth-20,340,variables.TEAL,25)
 
-board = Board(100,200)
 
 
-p = PlayerMove("x")
+board = Board(variables.boardX,variables.boardY)
+
+
+
 
 
 #SCREEN 2 Board Screen

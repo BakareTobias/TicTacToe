@@ -18,46 +18,58 @@ class Board():
 		pygame.draw.line(display,variables.WHITE,(self.x,self.y+50),(self.x+150,self.y+50),6)
 		pygame.draw.line(display,variables.WHITE,(self.x,self.y+100),(self.x+150,self.y+100),6)
 
+	def drawX(self,display,x,y):
+		pygame.draw.line(display,variables.BLACK,(x,y),(x+30,y+30),4)
+		pygame.draw.line(display,variables.BLACK,(x,y+30),(x+30,y),4)
+
+	def drawO(self,display,x,y):
+		pygame.draw.circle(display,variables.WHITE,(x,y),15,3)
+
+	def DrawMove(Pmove,pSymbol):
+		if Pmove ==1 and pSymbol=='X':
+			move1=True
+			return move1
+
 	def validatemove(self,display,mousepos,mouseclick ):
 		
 		#ROW 1
 		if self.x<=mousepos[0]<=self.x+54 and self.y<=mousepos[1]<=self.y+50 and 1 in variables.movesLeft and pygame.mouse.get_pressed()[0] :
 			variables.movesLeft.remove(1)
-			print('x')
-			return mouseclick[0]
+			return mouseclick[0],1
 		if self.x+55<=mousepos[0]<=self.x+110 and self.y<=mousepos[1]<=self.y+50 and 2 in variables.movesLeft and pygame.mouse.get_pressed()[0]:
 			variables.movesLeft.remove(2)
-			return
+			return mouseclick[0],2
 		if self.x+111<=mousepos[0]<=self.x+166 and self.y<=mousepos[1]<=self.y+50 and 3 in variables.movesLeft and pygame.mouse.get_pressed()[0]:  
 			variables.movesLeft.remove(3)
-			return
+			return mouseclick[0],3
 		#ROW 2
 		if self.x<=mousepos[0]<=self.x+54 and self.y+51<=mousepos[1]<=self.y+101 and 4 in variables.movesLeft and pygame.mouse.get_pressed()[0]:
 			variables.movesLeft.remove(4)
-			return
+			return mouseclick[0],4
 		if self.x+55<=mousepos[0]<=self.x+110 and self.y+51<=mousepos[1]<=self.y+101 and 5 in variables.movesLeft and pygame.mouse.get_pressed()[0]:
 		
 			variables.movesLeft.remove(5)
-			return
+			return mouseclick[0],5
 		if self.x+111<=mousepos[0]<=self.x+166 and self.y+51<=mousepos[1]<=self.y+101 and 6 in variables.movesLeft and pygame.mouse.get_pressed()[0]:
 		  
 			variables.movesLeft.remove(6)
-			return
+			return mouseclick[0],6
 		#ROW 3
 		if self.x<=mousepos[0]<=self.x+54 and self.y+102<=mousepos[1]<=self.y+152 and 7 in variables.movesLeft and pygame.mouse.get_pressed()[0]:
 		  
 			variables.movesLeft.remove(7)
-			return
+			return mouseclick[0],7
 		if self.x+55<=mousepos[0]<=self.x+110 and self.y+102<=mousepos[1]<=self.y+152 and 8 in variables.movesLeft and pygame.mouse.get_pressed()[0]:
 		
 			variables.movesLeft.remove(8)
-			return
+			return mouseclick[0],8
 		if self.x+111<=mousepos[0]<=self.x+166 and self.y+102<=mousepos[1]<=self.y+152 and 9 in variables.movesLeft and pygame.mouse.get_pressed()[0]:
 		  
 			variables.movesLeft.remove(9)
-			return
+			return mouseclick[0],9
 		else:
-			pass
+			return False,0
+			
 
 
 
