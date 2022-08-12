@@ -61,14 +61,6 @@ class Board():
 
 
 
-
-
-
-
-
-
-
-
 class Screen():
 
 	# INITIALIZATION OF SCREEN HAVING TITLE,
