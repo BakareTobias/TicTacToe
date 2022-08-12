@@ -1,5 +1,5 @@
 from typing import Text
-from classes import Board, Screen, NavButton,variables,Text,SelectionButtons
+from classes import Board, Screen, NavButton,variables,Text,SelectionButtons,PlayerMove
 
 #WELCOME SCREEN(SCREEN 1)
 ##welcome screen where player 1 and 2 select X or O
@@ -29,6 +29,7 @@ p2turn = Text("Player2's turn",variables.screenWidth-20,340,variables.TEAL,25)
 board = Board(100,200)
 
 
+p = PlayerMove("x")
 
 
 #SCREEN 2 Board Screen

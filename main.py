@@ -1,3 +1,4 @@
+from shutil import move
 import sys
 from classes import Board
 import objects,time,pygame
@@ -59,9 +60,12 @@ while True:
 	#which player is x 
 	if textBool1:
 		objects.PlayerSymbols1.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
+		#player1 symbol is X
+		p1Symbol ='X'
 	elif textBool2:
 		objects.PlayerSymbols2.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
-	
+		#player1 symbol is O
+		p1Symbol ='O'
 	
 	
 	#BOARD ASPECT OF GAME	
@@ -74,12 +78,14 @@ while True:
 	else:
 		objects.p2turn.drawText(objects.welcomeScreen.returnTitle())
 		pass
-	#check if a valid move is made
-	validMove  =objects.board.focuscheck(objects.welcomeScreen.returnTitle(),mouse_pos,mouse_click)
-	
-	if validMove:
-		objects.board.drawX(objects.welcomeScreen.returnTitle())
-		print('P')
+	#check if a valid move is made	
+	if objects.board.validatemove(objects.welcomeScreen.returnTitle(),mouse_pos,mouse_click):#if the move is valid
+		pass
+
+
+
+
+
 
 	# CHECKING IF THE EXIT BUTTON HAS BEEN CLICKED OR NOT
 	for event in pygame.event.get():
