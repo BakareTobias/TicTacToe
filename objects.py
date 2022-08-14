@@ -39,16 +39,3 @@ p1Wins = Text("Player1 Wins!",variables.screenWidth-20,800,variables.TEAL,25)
 p2Wins = Text("Player2 Wins!",variables.screenWidth-20,800,variables.TEAL,25)
 
 
-
-#SCREEN 2 Board Screen
-goScreen = Screen("go screen")
-goButton = NavButton(0, 450, 80, 50, variables.BLACK,
-					variables.RED, "TimesNewRoman",
-					variables.WHITE, "Back") 
-
-#winner screen
-winnerScreen = Screen("Winner screen")
-
-
-#end screen 
-endScreen = Screen("end screen")
