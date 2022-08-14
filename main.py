@@ -1,3 +1,4 @@
+from http import client
 from shutil import move
 import sys
 import objects,time,pygame,variables
@@ -5,8 +6,9 @@ from variables import boardX,boardY
 x=0
 p1turn = True
 p2turn = False
-
-
+p1Won  = False
+p2Won = False
+click = True
 movesMade2 = [False,False,False,False,False,False,False,False,False]
 movesMade1 = [False,False,False,False,False,False,False,False,False]
 
@@ -60,48 +62,66 @@ while True:
 		objects.NextButton.showButton(objects.welcomeScreen.returnTitle())
 		#if next button is pressed
 		if objects.goScreenbutton:
-			win = objects.winnerScreen.makeCurrentScreen()
-			objects.welcomeScreen.endCurrentScreen()
+			sys.exit()
+		#which player is x 
+		if textBool1:
+			objects.PlayerSymbols1.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
+			#player1 symbol is X
+			p1Symbol ='X'
+			p2Symbol ='O'
+		elif textBool2:
+			objects.PlayerSymbols2.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
+			#player1 symbol is O
+			p1Symbol ='O'
+			p2Symbol ='X'
+		
+		
+		#BOARD ASPECT OF GAME	
+		
+		#draw board
+		objects.board.drawBoard(objects.welcomeScreen.returnTitle())
+		#indicate whose turn it is
+		if Turn %2 == 0:
+			objects.p1turn.drawText(objects.welcomeScreen.returnTitle())
+			isClicked,mov3 =objects.board.validatemove(objects.welcomeScreen.returnTitle(),mouse_pos,mouse_click)#if the move is valid
+			#check if a valid move is made
+			if click:	
+				if isClicked:
+					movesMade1[mov3-1]=True		
+					Turn+=1	
 
-	#which player is x 
-	if textBool1:
-		objects.PlayerSymbols1.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
-		#player1 symbol is X
-		p1Symbol ='X'
-		p2Symbol ='O'
-	elif textBool2:
-		objects.PlayerSymbols2.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
-		#player1 symbol is O
-		p1Symbol ='O'
-		p2Symbol ='X'
-	
-	
-	#BOARD ASPECT OF GAME	
-	
-	#draw board
-	objects.board.drawBoard(objects.welcomeScreen.returnTitle())
-	#indicate whose turn it is
-	if Turn %2 == 0:
-		objects.p1turn.drawText(objects.welcomeScreen.returnTitle())
-		isClicked,mov3 =objects.board.validatemove(objects.welcomeScreen.returnTitle(),mouse_pos,mouse_click)#if the move is valid
-		#check if a valid move is made	
-		if isClicked:
-			movesMade1[mov3-1]=True		
-			Turn+=1	
+		else:
+			objects.p2turn.drawText(objects.welcomeScreen.returnTitle())
+			isClicked,mov3 =objects.board.validatemove(objects.welcomeScreen.returnTitle(),mouse_pos,mouse_click)#if the move is valid
+			#check if a valid move is made
+			if click:
+				if isClicked:
+					movesMade2[mov3-1]=True	
+					Turn +=1
+		
+		try:
+			variables.BoardGate(movesMade1,p1Symbol,boardX,boardY)
+			variables.BoardGate(movesMade2,p2Symbol,boardX,boardY)
+			p1Won = variables.checkForWin(movesMade1,p1Won,p1Symbol)
+			p2Won = variables.checkForWin(movesMade2,p2Won,p2Symbol)
+			print(p1Won)
+		except NameError:
+			objects.p1_chooseXorO.drawText(objects.welcomeScreen.returnTitle())
 
-	else:
-		objects.p2turn.drawText(objects.welcomeScreen.returnTitle())
-		isClicked,mov3 =objects.board.validatemove(objects.welcomeScreen.returnTitle(),mouse_pos,mouse_click)#if the move is valid
-		#check if a valid move is made
-		if isClicked:
-			movesMade2[mov3-1]=True	
-			Turn +=1
+			pass
+
+		if p1Won == True:
+			objects.p1Wins.drawText(objects.welcomeScreen.returnTitle())
+			click = False
+
+		if p2Won == True:
+			objects.p2Wins.drawText(objects.welcomeScreen.returnTitle())
+			click=False
+
+
+
 	
-	try:
-		variables.BoardGate(movesMade1,p1Symbol,boardX,boardY)
-		variables.BoardGate(movesMade2,p2Symbol,boardX,boardY)
-	except NameError:
-		pass
+
 	
 
 	# CHECKING IF THE EXIT BUTTON HAS BEEN CLICKED OR NOT

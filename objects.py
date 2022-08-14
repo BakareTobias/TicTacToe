@@ -7,7 +7,7 @@ welcomeScreen = Screen("Welcome screen")
 #Next Button
 NextButton = NavButton(300, 450, 80, 50, variables.GOLD,
 					variables.RED, "TimesNewRoman",
-					variables.WHITE, "Next")
+					variables.WHITE, "Quit")
 #title
 Title = Text("Tobias' Tic-Tac-Toe",variables.screenWidth,80,variables.TEAL,25)
 
@@ -21,6 +21,9 @@ OButton = SelectionButtons(230,65,40,40,None,variables.RED,
 							variables.WHITE, "O")
 PlayerSymbols1 = Text(variables.p1ix,variables.screenWidth,270,variables.TEAL,25)
 PlayerSymbols2 = Text(variables.p1io,variables.screenWidth,270,variables.TEAL,25)
+p1_chooseXorO = Text("P1 hasn't chosen X or O",variables.screenWidth-20,270,variables.TEAL,25)
+
+
 
 #BOARD
 p1turn = Text("Player1's turn",variables.screenWidth-20,340,variables.TEAL,25)
@@ -31,7 +34,9 @@ p2turn = Text("Player2's turn",variables.screenWidth-20,340,variables.TEAL,25)
 
 board = Board(variables.boardX,variables.boardY)
 
-
+#p1 wins
+p1Wins = Text("Player1 Wins!",variables.screenWidth-20,800,variables.TEAL,25)
+p2Wins = Text("Player2 Wins!",variables.screenWidth-20,800,variables.TEAL,25)
 
 
 

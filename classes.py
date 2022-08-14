@@ -74,9 +74,6 @@ class Board():
 		else:
 			return False,0
 			
-
-
-
 class Screen():
 
 	# INITIALIZATION OF SCREEN HAVING TITLE,

@@ -90,3 +90,29 @@ def BoardGate(movesMade,pSymbol,boardX,boardY):
 			objects.board.drawX(objects.welcomeScreen.returnTitle(),boardX+100,boardY+100)
 		elif pSymbol == 'O' :
 			objects.board.drawO(objects.welcomeScreen.returnTitle(),boardX+100,boardY+100)
+
+
+def checkForWin(movesMade,pWon,pSymbol):#CHECK IF THE MOVE IS A WINNING MOVE 
+    for _ in (1,4,7):
+        _ = _-1
+        if (movesMade[_] == movesMade[_+1] == movesMade[_+2]==True):
+            return True
+		
+
+
+    for _ in (1,2,3):
+        _ = _-1
+        if (movesMade[_] == movesMade[_+3] == movesMade[_+6]==True):
+            return True
+		
+    _ = 3
+    _ = _-1
+    if (movesMade[_] == movesMade[_+2] == movesMade[_+4]==True):
+            return True
+		
+    _ = 1
+    _ = _-1
+    if (movesMade[_] == movesMade[_+4] == movesMade[_+8]==True):
+            return True
+
+ 
