@@ -28,6 +28,7 @@ p2turn = Text("Player2's turn",variables.screenWidth-20,340,variables.TEAL,25)
 
 
 
+
 board = Board(variables.boardX,variables.boardY)
 
 

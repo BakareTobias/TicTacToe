@@ -19,11 +19,15 @@ class Board():
 		pygame.draw.line(display,variables.WHITE,(self.x,self.y+100),(self.x+150,self.y+100),6)
 
 	def drawX(self,display,x,y):
+		x+=10
+		y+=10
 		pygame.draw.line(display,variables.BLACK,(x,y),(x+30,y+30),4)
 		pygame.draw.line(display,variables.BLACK,(x,y+30),(x+30,y),4)
 
 	def drawO(self,display,x,y):
-		pygame.draw.circle(display,variables.WHITE,(x,y),15,3)
+		x+=25
+		y+=25
+		pygame.draw.circle(display,variables.WHITE,(x,y),17,3)
 
 	def DrawMove(Pmove,pSymbol):
 		if Pmove ==1 and pSymbol=='X':

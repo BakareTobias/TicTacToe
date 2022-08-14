@@ -27,15 +27,66 @@ boardX=100
 boardY=200
 
         
-def DrawMove(Pmove,pSymbol):
-		if Pmove ==1 and pSymbol=='X':
-			return True
+def BoardGate(movesMade,pSymbol,boardX,boardY):
+	if movesMade[0] == True:
+			if pSymbol == 'X' :
+				objects.board.drawX(objects.welcomeScreen.returnTitle(),boardX,boardY)
+			elif pSymbol == 'O' :
+				objects.board.drawO(objects.welcomeScreen.returnTitle(),boardX,boardY)
+            
+            
 
-def ActuallyDrawsMove(move):
-    if move == True:
-        objects.board.drawX(objects.welcomeScreen.returnTitle(),objects.board.x,objects.board.y)
+
+	if movesMade[1] == True:
+			if pSymbol == 'X' :
+				objects.board.drawX(objects.welcomeScreen.returnTitle(),boardX+50,boardY)
+			elif pSymbol == 'O' :
+				objects.board.drawO(objects.welcomeScreen.returnTitle(),boardX+50,boardY)
+
+	if movesMade[2] == True:
+		if pSymbol == 'X' :
+			objects.board.drawX(objects.welcomeScreen.returnTitle(),boardX+100,boardY)
+		elif pSymbol == 'O' :
+			objects.board.drawO(objects.welcomeScreen.returnTitle(),boardX+100,boardY)
+
+	
+	if movesMade[3] == True:
+		if pSymbol == 'X' :
+			objects.board.drawX(objects.welcomeScreen.returnTitle(),boardX,boardY+50)
+		elif pSymbol == 'O' :
+			objects.board.drawO(objects.welcomeScreen.returnTitle(),boardX,boardY+50)
 
 
+	if movesMade[4] == True:
+		if pSymbol == 'X' :
+			objects.board.drawX(objects.welcomeScreen.returnTitle(),boardX+50,boardY+50)
+		elif pSymbol == 'O' :
+			objects.board.drawO(objects.welcomeScreen.returnTitle(),boardX+50,boardY+50)
 
-			
+	
+	if movesMade[5] == True:
+		if pSymbol == 'X' :
+			objects.board.drawX(objects.welcomeScreen.returnTitle(),boardX+100,boardY+50)
+		elif pSymbol == 'O' :
+			objects.board.drawO(objects.welcomeScreen.returnTitle(),boardX+100,boardY+50)
 
+
+	if movesMade[6] == True:
+		if pSymbol == 'X' :
+			objects.board.drawX(objects.welcomeScreen.returnTitle(),boardX,boardY+100)
+		elif pSymbol == 'O' :
+			objects.board.drawO(objects.welcomeScreen.returnTitle(),boardX,boardY+100)
+
+	
+	if movesMade[7] == True:
+		if pSymbol == 'X' :
+			objects.board.drawX(objects.welcomeScreen.returnTitle(),boardX+50,boardY+100)
+		elif pSymbol == 'O' :
+			objects.board.drawO(objects.welcomeScreen.returnTitle(),boardX+50,boardY+100)
+
+
+	if movesMade[8] == True:
+		if pSymbol == 'X' :
+			objects.board.drawX(objects.welcomeScreen.returnTitle(),boardX+100,boardY+100)
+		elif pSymbol == 'O' :
+			objects.board.drawO(objects.welcomeScreen.returnTitle(),boardX+100,boardY+100)
