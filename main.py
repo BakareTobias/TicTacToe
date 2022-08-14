@@ -3,6 +3,11 @@ from shutil import move
 import sys
 import objects,time,pygame,variables
 from variables import boardX,boardY
+
+soundObj = pygame.mixer.Sound('Fireboy_Bandana_Ft_Asake_9jaflaver.com_-1.wav')
+
+soundObj.play()
+
 x=0
 p1turn = True
 p2turn = False
@@ -28,8 +33,7 @@ while True:
 	# function FOR MENU SCREEN
 	objects.welcomeScreen.screenUpdate()
 	
-	# CALLING THE FUNCTION OF CONTROL BAR
-	objects.winnerScreen.screenUpdate()
+	
 	# STORING THE MOUSE EVENT TO
 	# CHECK THE POSITION OF THE MOUSE
 	mouse_pos = pygame.mouse.get_pos()
@@ -104,7 +108,7 @@ while True:
 			variables.BoardGate(movesMade2,p2Symbol,boardX,boardY)
 			p1Won = variables.checkForWin(movesMade1,p1Won,p1Symbol)
 			p2Won = variables.checkForWin(movesMade2,p2Won,p2Symbol)
-			print(p1Won)
+	
 		except NameError:
 			objects.p1_chooseXorO.drawText(objects.welcomeScreen.returnTitle())
 

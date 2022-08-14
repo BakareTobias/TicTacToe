@@ -9,4 +9,5 @@ List of files
 3. File containing all objects derived using classes file
 4. Font files containing
 5. Main file  (where the game is run)
+6. Music file (background music is Bandana by Fireboy and Asake)
 
