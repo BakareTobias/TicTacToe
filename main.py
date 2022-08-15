@@ -4,23 +4,23 @@ import sys
 import objects,time,pygame,variables
 from variables import boardX,boardY
 
-soundObj = pygame.mixer.Sound('Fireboy_Bandana_Ft_Asake_9jaflaver.com_-1.wav')
 
-soundObj.play()
 
 x=0
 p1turn = True
 p2turn = False
 p1Won  = False
 p2Won = False
-click = True
+click = False
 movesMade2 = [False,False,False,False,False,False,False,False,False]
 movesMade1 = [False,False,False,False,False,False,False,False,False]
 
 # CALLING OF THE FUNCTION TO
 # MAKE THE SCREEN FOR THE WINDOW
 screen1 = objects.welcomeScreen.makeCurrentScreen()
+soundObj = pygame.mixer.Sound('Fireboy_Bandana_Ft_Asake_9jaflaver.com_-1.wav')
 
+soundObj.play()
 #whose turn is it
 Turn = 0
 
@@ -29,6 +29,7 @@ textBool1  = False
 textBool2 =  False
 # MAIN LOOPING
 while True:
+
 	# CALLING OF screenUpdate
 	# function FOR MENU SCREEN
 	objects.welcomeScreen.screenUpdate()
@@ -67,17 +68,21 @@ while True:
 		#if next button is pressed
 		if objects.goScreenbutton:
 			sys.exit()
+			#objects.welcomeScreen.endCurrentScreen()
+			#objects.welcomeScreen.makeCurrentScreen()
 		#which player is x 
 		if textBool1:
 			objects.PlayerSymbols1.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
 			#player1 symbol is X
 			p1Symbol ='X'
 			p2Symbol ='O'
+			click = True
 		elif textBool2:
 			objects.PlayerSymbols2.drawText(objects.welcomeScreen.returnTitle())#Player1 X or O
 			#player1 symbol is O
 			p1Symbol ='O'
 			p2Symbol ='X'
+			click = True
 		
 		
 		#BOARD ASPECT OF GAME	
