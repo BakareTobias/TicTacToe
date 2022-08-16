@@ -1,5 +1,5 @@
 # TicTacToe
-This is a README for my first pygame application. it is built entirely in python using pygame library. Building this project was considerably harder than the test based version i must say. But it has opened me up to new concepts and i aam very grateful for that. 
+This is a README for my first pygame application. it is built entirely in python using pygame library. Building this project was considerably harder than the text based version i must say. But it has opened me up to new concepts and i am very grateful for that. 
 
 It is a 2 player tictactoe game. players 1 gets to pick from X or O first. then its time to duel it out on the board! May the best player win
 
