@@ -1,5 +1,5 @@
 # TicTacToe
-This is a README for my first pygame application. it is built entirely in python using pygame library. Building this project was considerably harder than the text based version i must say. But it has opened me up to new concepts and i am very grateful for that. 
+This is a README for my first pygame application. it is built entirely in python using pygame library. Building this project was considerably harder than the text based version i must say. But it has further established my understanding of Object Oriented Programming and i am very grateful for that. 
 
 It is a 2 player tictactoe game. players 1 gets to pick from X or O first. then its time to duel it out on the board! May the best player win
 
@@ -11,3 +11,7 @@ List of files
 5. Main file  (where the game is run)
 6. Music file (background music is Bandana by Fireboy and Asake)
 
+Installation Guide
+-download the pygame library using 'pip install pygame'
+-donwload all the files
+-run main.py
